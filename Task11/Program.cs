@@ -1,23 +1,15 @@
-﻿// Напишите программу, которая будет принимать на вход два числа и выводить, является ли первое число кратным второму. 
-// Если число 1 не кратно числу 2, то программа выводит остаток от деления.
-// 34, 5 -> не кратно, остаток 4
-// 16, 4 -> кратно
+﻿// Напишите программу, которая выводит случайное трёхзначное число и удаляет вторую цифру этого числа.
+// 456 -> 46
+// 782 -> 72
+// 918 -> 98
 
-Console.WriteLine("Введите число 1");
-int num1 = Convert.ToInt32(Console.ReadLine());
-Console.WriteLine("Введите число 2");
-int num2 = Convert.ToInt32(Console.ReadLine());
-bool Multiplicity(int number1, int number2)
+int number = new Random().Next(100, 1000);
+Console.WriteLine($"случайное трехзначное число {number}");
+int RemoveSecondDigit(int number)
 {
-    return number1 % number2 == 0;
+    int firstDigit = number / 100;
+    int secondDigit = number % 10;
+    int result = firstDigit * 10 + secondDigit;
+    return result;
 }
-
-// int MultiplicitySecond(int number1, int number2)
-// {
-//     return number1 % number2;
-// }
-// int result2 = MultiplicitySecond(num1, num2);
-// Console.WriteLine(result2 == 0 ? "кратно" : $"некратно, остаток = {result2}");
-
-bool result = Multiplicity(num1, num2);
-Console.WriteLine(result ? "кратно" : $"некратно, остаток = {num1 % num2}");
+Console.WriteLine(RemoveSecondDigit(number));
