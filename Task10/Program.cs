@@ -5,5 +5,13 @@
 
 Console.WriteLine("Введите трехзначное число: ");
 int num = Convert.ToInt32(Console.ReadLine());
-int result = num / 10;
-Console.WriteLine(result % 10);
+int Result(int num)
+{
+    if (num > 100 && num < 1000)
+    {
+        num = num / 10;
+    }
+    return (num % 10);
+}
+if (num > 1000 || num < 100) Console.WriteLine("Error");
+else Console.WriteLine(Result(num));

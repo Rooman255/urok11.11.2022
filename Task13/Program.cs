@@ -15,4 +15,3 @@ int ThirtDigit(int num)
 }
 if(num < 100) Console.WriteLine("Третьей цыфры нет");
 else Console.WriteLine(ThirtDigit(num));
-
