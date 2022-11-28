@@ -8,7 +8,7 @@ double[] arr = new double[size];
 Random rnd = new Random();
 for (int i = 0; i < arr.Length; i++)
 {
-arr[i] = rnd.NextDouble() * (max - min) + min;
+arr[i] = Math.Round((rnd.NextDouble() * (max - min) + min), 1);
 }
 return arr;
 }
