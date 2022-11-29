@@ -41,7 +41,7 @@ double MaxElements(double[] arr)
     {
         if (arr[i] > max) max = arr[i];
     }
-    return max;
+    return max *= -1;
 }
 double[] array = CreateArrayRndDouble(10, -1000, 1000);
 PrintArray(array);
