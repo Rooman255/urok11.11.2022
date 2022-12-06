@@ -6,50 +6,64 @@
 // 8 4 2 4
 // Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
-double[,] CreateMatrixRndDouble(int rows, int colums)
+int[,] CreateMatrixRndInt(int rows, int columns, int min, int max)
 {
-    double[,] matrix = new double[rows, colums];
+    int[,] matrix = new int[rows, columns];
     Random rnd = new Random();
+
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            matrix[i, j] = Math.Round(rnd.NextDouble() * 100, 1);
+            matrix[i, j] = rnd.Next(min, max + 1);
         }
     }
     return matrix;
 }
 
 void PrintMatrix(int[,] matrix)
+
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        Console.Write("|");
+        Console.Write("[");
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j], 4}, ");
-            else Console.Write($"{matrix[i, j], 4} ");
+            if (j < matrix.GetLength(1) - 1) Console.Write($"{matrix[i, j],2}, ");
+            else Console.Write($"{matrix[i, j],2} ");
         }
-        Console.WriteLine("|");
+        Console.WriteLine("]");
     }
 }
 
-double AverageNumberMatrix(double[] matrix)
+double[] ArithmeticNumber(int[,] matrix)
 {
-    double SummNumberMatrix(double[,] matrix)
-    {
+    double[] ArithmeticNumberNewMassiv = new double[matrix.GetLength(1)];
     for (int j = 0; j < matrix.GetLength(1); j++)
     {
+        double summaArithmeticNumber = 0;
         for (int i = 0; i < matrix.GetLength(0); i++)
         {
-            matrix[i, i] += matrix[i, j];
+            summaArithmeticNumber += matrix[i, j];
         }
+        ArithmeticNumberNewMassiv[j] = Math.Round(summaArithmeticNumber / matrix.GetLength(0), 1);
     }
-    return matrix;
-    }
+    return ArithmeticNumberNewMassiv;
 }
-double[,] array2D = CreateMatrixRndDouble(3, 4);
-PrintMatrix(array2D);
-Console.WriteLine();
-double[] averageMatrix = AverageNumberMatrix(array2D);
-PrintMatrix(averageMatrix);
+
+void PrintArray(double[] arr)
+{
+    Console.Write("[");
+    for (int i = 0; i < arr.Length; i++)
+    {
+        if (i < arr.Length - 1) Console.Write($"{arr[i]}, ");
+        else Console.Write($"{arr[i]}");
+    }
+    Console.WriteLine("]");
+}
+
+int[,] creatMatrixRndInt = CreateMatrixRndInt(3, 5, 1, 10);
+PrintMatrix(creatMatrixRndInt);
+double[] array = ArithmeticNumber(creatMatrixRndInt);
+Console.Write("Среднее арифметическое элементов в столбцах: ");
+PrintArray(array);
