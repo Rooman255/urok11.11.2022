@@ -25,7 +25,7 @@ int[,] CreateMatrixRndInt(int rows, int colums, int min, int max)
             matrix[i, j] = rnd.Next(min, max + 1);
         }
     }
-    if (pos1 < 0 | pos1 > matrix.GetLength(0) -1 | pos2 < 0 | pos2 > matrix.GetLength(1) -1)
+    if (pos1 < 0 || pos1 > matrix.GetLength(0) -1 || pos2 < 0 || pos2 > matrix.GetLength(1) -1)
     {
         Console.WriteLine("Элемент не существует");
     }
